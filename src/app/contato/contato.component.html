@@ -1,0 +1,36 @@
+<h2 class="contact__title">Entre em contato</h2>
+<section class="contact__container">
+    <form class="contact-form" [formGroup]="formContato" (ngSubmit)="enviarFormulario()">
+        <input type="text" placeholder="Digite o seu nome" formControlName="nome" 
+        [class.valid]="formContato.controls['nome'].valid"
+        [class.invalid]="formContato.controls['nome'].invalid && (formContato.controls['nome'].touched || formContato.controls['nome'].dirty)">
+        <div *ngIf="formContato.controls['nome'].invalid && (formContato.controls['nome'].touched || formContato.controls['nome'].dirty)">
+        <small class="error-message" *ngIf="formContato.controls['nome'].hasError('minlength')">
+            Deve ter no mínimo 4 caracteres
+        </small>
+        <small class="error-message" *ngIf="formContato.controls['nome'].hasError('required')">
+        Campo obrigatório
+        </small>
+        </div>
+
+        <input type="assunto" placeholder="Digite o assunto" formControlName="assunto"
+        [class.valid]="formContato.controls['assunto'].valid"
+        [class.invalid]="formContato.controls['assunto'].invalid && (formContato.controls['assunto'].touched || formContato.controls['assunto'].dirty)">
+        <div *ngIf="formContato.controls['assunto'].invalid && (formContato.controls['assunto'].touched || formContato.controls['assunto'].dirty)">
+            <small class="error-message" *ngIf="formContato.controls['assunto'].hasError('minlength')">
+                Deve ter no mínimo 10 caracteres
+            </small>
+            <small class="error-message" *ngIf="formContato.controls['assunto'].hasError('required')">
+            Campo obrigatório
+            </small>
+            </div>
+
+        <input type="tel" placeholder="(__) _____-____" mask="(00) 00000-0000">
+        <input type="email" placeholder="Digite o email" name="" id="">
+        <textarea maxlength="400" placeholder="Digite a mensagem"></textarea>
+        <button [disabled]="formContato.invalid" type="submit">Enviar</button>
+    </form>
+    <address>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14636.930464800284!2d-46.5491937!3d-23.4881295!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6e4fd72917565c63!2sInternacional%20Shopping!5e0!3m2!1sen!2sbr!4v1655420290032!5m2!1sen!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </address>
+</section>
